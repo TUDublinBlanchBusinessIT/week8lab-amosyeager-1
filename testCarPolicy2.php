@@ -1,15 +1,13 @@
 <?php
-date_default_timezone_set('Europe/Dublin');
-include("CarPolicy2.php");
-$initialPremium = 600;
-$myCarpolicy = new CarPolicy("XM123456", $initialPremium);
 
-$myCarpolicy->setDateOfLastClaim("2015-10-10");
+require_once 'CarPolicy2.php';
 
-echo "years no claims: " . $myCarpolicy->getTotalYearsNoClaims();
+$carPolicy = new CarPolicy(1234, 500);
+$carPolicy->setDateOfLastClaim('2023-01-01');
 
-echo "Your initial premium is $initialPremium";
-
-echo "Your discounted premium is " . $myCarpolicy->getDiscountedPremium();
+echo $carPolicy->__toString() . "\n";
+echo "Total Years No Claims: " . $carPolicy->getTotalYearsNoClaims() . "\n";
+echo "Discount: " . ($carPolicy->getDiscount() * 100) . "%\n";
+echo "Discounted Premium: $" . $carPolicy->getDiscountedPremium() . "\n";
 
 ?>
